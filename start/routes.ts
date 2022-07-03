@@ -24,3 +24,9 @@ import User from 'App/Models/User'
 Route.get('users', async () => {
   return await User.all()
 })
+
+Route.post('users', async ({request}) => {
+  const data = request.only(['login', 'password'])
+
+  return await User.create(data)
+})

@@ -1,10 +1,24 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, beforeCreate, column } from '@ioc:Adonis/Lucid/Orm'
+import {v4 as uuid} from 'uuid'
 
 export default class User extends BaseModel {
-  @column({ isPrimary: true })
-  public id: number
+  public static selfAssignPrimaryKey = true
 
+  @column({ isPrimary: true })
+  public id: string
+
+  @beforeCreate()
+  public static assignUuid(user: User) {
+    user.id = uuid()
+  }
+
+  @column()
+  public login: string
+
+  @column()
+  public password: string
+  
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
