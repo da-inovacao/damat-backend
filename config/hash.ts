@@ -46,10 +46,10 @@ export default hashConfig({
     argon: {
       driver: 'argon2',
       variant: 'id',
-      iterations: 3,
-      memory: 4096,
+      iterations: 2,
+      memory: 1024,
       parallelism: 1,
-      saltSize: 16,
+      saltSize: 8,
     },
 
     /*
