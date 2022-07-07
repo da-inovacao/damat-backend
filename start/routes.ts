@@ -28,6 +28,12 @@ Route.get('/notices/:id', 'NoticesController.show')
 Route.put('/notices/:id', 'NoticesController.update')
 Route.delete('/notices/:id', 'NoticesController.destroy')
 
+Route.post('/events', 'EventsController.create')
+Route.get('/events', 'EventsController.index')
+Route.get('/events/:id', 'EventsController.show')
+Route.put('/events/:id', 'EventsController.update')
+Route.delete('/events/:id', 'EventsController.destroy')
+
 // Route.get('users', async () => {
 //   return await User.all()
 // })
