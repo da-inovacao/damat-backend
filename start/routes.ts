@@ -22,19 +22,25 @@ import Route from '@ioc:Adonis/Core/Route'
 import User from 'App/Models/User'
 import Hash from '@ioc:Adonis/Core/Hash'
 
-Route.get('users', async () => {
-  return await User.all()
-})
+Route.post('/notices', 'NoticesController.create')
+Route.get('/notices', 'NoticesController.index')
+Route.get('/notices/:id', 'NoticesController.show')
+Route.put('/notices/:id', 'NoticesController.update')
+Route.delete('/notices/:id', 'NoticesController.destroy')
 
-Route.post('users', async ({ request }) => {
-  const data = request.only(['login', 'password'])
+// Route.get('users', async () => {
+//   return await User.all()
+// })
 
-  return await User.create(data)
-})
+// Route.post('users', async ({ request }) => {
+//   const data = request.only(['login', 'password'])
 
-Route.get('login', async ({ auth }) => {
-  return auth.use('basic').authenticate()
-})
+//   return await User.create(data)
+// })
+
+// Route.get('login', async ({ auth }) => {
+//   return auth.use('basic').authenticate()
+// })
 
 Route.post('login', async ({ auth, request, response }) => {
   const login = request.input('login')
@@ -49,3 +55,9 @@ Route.post('login', async ({ auth, request, response }) => {
     response.redirect('/login')
   }
 })
+
+// Route.get('dashboard', async ({ auth }) => {
+//   await auth.use('web').authenticate()
+
+//   return { view: 'dashboard' }
+// })

@@ -1,11 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, beforeCreate, column } from '@ioc:Adonis/Lucid/Orm'
 import { v4 as uuid } from 'uuid'
 import Hash from '@ioc:Adonis/Core/Hash'
 import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class User extends BaseModel {
-
   @column()
   public id: string
 
@@ -22,12 +21,6 @@ export default class User extends BaseModel {
 
   @column()
   public password: string
-
-  @beforeSave()
-  public static async hashPassword(user: User) {
-    // Logger.info(JSON.stringify(user))
-    // Logger.info(JSON.stringify(user))
-  }
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
