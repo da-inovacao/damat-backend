@@ -34,6 +34,12 @@ Route.get('/events/:id', 'EventsController.show')
 Route.put('/events/:id', 'EventsController.update')
 Route.delete('/events/:id', 'EventsController.destroy')
 
+Route.post('/presentations', 'PresentationsController.create')
+Route.get('/presentations', 'PresentationsController.index')
+Route.get('/presentations/:id', 'PresentationsController.show')
+Route.put('/presentations/:id', 'PresentationsController.update')
+Route.delete('/presentations/:id', 'PresentationsController.destroy')
+
 // Route.get('users', async () => {
 //   return await User.all()
 // })

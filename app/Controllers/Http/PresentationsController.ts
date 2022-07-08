@@ -1,27 +1,26 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Event from 'App/Models/Event'
+import Presentation from 'App/Models/Presentation'
 
-export default class EventsController {
+export default class PresentationsController {
   public async create({ auth, request }: HttpContextContract) {
     await auth.use('web').authenticate()
 
+    const { eventId } = request.only(['eventId'])
     const data = request.only(['title'])
+    const event = await Event.findOrFail(eventId)
 
-    return await Event.create(data)
+    return await (await event.related('presentations').create(data)).save()
   }
 
   public async index({}: HttpContextContract) {
-    return await Event.all()
+    return await Presentation.all()
   }
 
   public async show({ request }: HttpContextContract) {
     const id = request.param('id')
 
-    const event = await Event.findOrFail(id)
-
-    await event.load('presentations', () => {})
-
-    return event
+    return await Presentation.findOrFail(id)
   }
 
   public async update({ auth, request }: HttpContextContract) {
@@ -30,8 +29,8 @@ export default class EventsController {
     const id = request.param('id')
     const data = request.body()
 
-    const event = await Event.findOrFail(id)
-    return await event.merge(data).save()
+    const presentation = await Presentation.findOrFail(id)
+    return await presentation.merge(data).save()
   }
 
   public async destroy({ auth, request }: HttpContextContract) {
@@ -39,8 +38,8 @@ export default class EventsController {
 
     const id = request.param('id')
 
-    const event = await Event.findOrFail(id)
+    const presentation = await Presentation.findOrFail(id)
 
-    return await event.delete()
+    return await presentation.delete()
   }
 }
