@@ -54,17 +54,21 @@ Route.delete('/presentations/:id', 'PresentationsController.destroy')
 //   return auth.use('basic').authenticate()
 // })
 
-Route.post('login', async ({ auth, request, response }) => {
+Route.post('/login', async ({ auth, request, response }) => {
   const login = request.input('login')
   const password = request.input('password')
 
-  const user = await User.query().where('login', login).firstOrFail()
+  try {
+    const user = await User.query().where('login', login).firstOrFail()
 
-  if (await Hash.verify(user.password, password)) {
-    await auth.use('web').login(user)
-    response.redirect('/dashboard')
-  } else {
-    response.redirect('/login')
+    if (await Hash.verify(user.password, password)) {
+      await auth.use('web').login(user)
+      response.status(200)
+    } else {
+      response.status(401).json({ message: 'INVALID PASSWORD' })
+    }
+  } catch (error) {
+    response.status(401).json({ message: 'INVALID LOGIN' })
   }
 })
 
