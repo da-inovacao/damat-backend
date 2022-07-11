@@ -18,6 +18,9 @@ export default class Event extends BaseModel {
   @column()
   public title: string
 
+  @column()
+  public abstract: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

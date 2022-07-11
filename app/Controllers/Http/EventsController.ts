@@ -6,7 +6,7 @@ export default class EventsController {
   public async create({ auth, request }: HttpContextContract) {
     await auth.use('web').authenticate()
 
-    const data = request.only(['title'])
+    const data = request.body()
 
     return await Event.create(data)
   }
