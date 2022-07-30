@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.increments('id', { primaryKey: true })
       table.text('title').notNullable()
       table.text('text')
+      table.text('abstract')
       table.text('href')
       table.dateTime('end_at')
 

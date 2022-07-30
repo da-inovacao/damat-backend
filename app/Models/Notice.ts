@@ -9,6 +9,9 @@ export default class Notice extends BaseModel {
   public title: string
 
   @column()
+  public abstract: string
+
+  @column()
   public text: string
 
   @column()
