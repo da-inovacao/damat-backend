@@ -28,6 +28,12 @@ Route.get('/notices/:id', 'NoticesController.show')
 Route.put('/notices/:id', 'NoticesController.update')
 Route.delete('/notices/:id', 'NoticesController.destroy')
 
+Route.post('/certificates', 'CertificatesController.create')
+Route.get('/certificates', 'CertificatesController.index')
+Route.get('/certificates/:id', 'CertificatesController.show')
+Route.put('/certificates/:id', 'CertificatesController.update')
+Route.delete('/certificates/:id', 'CertificatesController.destroy')
+
 Route.post('/events', 'EventsController.create')
 Route.get('/events', 'EventsController.index')
 Route.get('/events/:id', 'EventsController.show')
