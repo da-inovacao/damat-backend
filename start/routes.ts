@@ -50,15 +50,7 @@ Route.delete('/presentations/:id', 'PresentationsController.destroy')
 //   return await User.all()
 // })
 
-// Route.post('users', async ({ request }) => {
-//   const data = request.only(['login', 'password'])
-
-//   return await User.create(data)
-// })
-
-// Route.get('login', async ({ auth }) => {
-//   return auth.use('basic').authenticate()
-// })
+Route.post('/users', 'UsersController.create')
 
 Route.post('/login', async ({ auth, request, response }) => {
   const login = request.input('login')
