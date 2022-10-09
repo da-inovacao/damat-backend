@@ -16,6 +16,9 @@ steps:
     - 'PG_PORT=${_PG_PORT}'
     - 'PG_USER=${_PG_USER}'
     - 'SESSION_DRIVER=${_SESSION_DRIVER}'
+- name: node:14.20.0
+  entrypoint: yarn
+  args: ["build"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "1600s"
