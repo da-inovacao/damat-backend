@@ -1,14 +1,3 @@
-env_variables:
-  - 'HOST=${_HOST}'
-  - 'APP_KEY=${_APP_KEY}'
-  - 'DB_CONNECTION=${_DB_CONNECTION}'
-  - 'DRIVE_DISK=${_DRIVE_DISK}'
-  - 'PG_DB_NAME=${_PG_DB_NAME}'
-  - 'PG_HOST=${_PG_HOST}'
-  - 'PG_PASSWORD=${_PG_PASSWORD}'
-  - 'PG_PORT=${_PG_PORT}'
-  - 'PG_USER=${_PG_USER}'
-  - 'SESSION_DRIVER=${_SESSION_DRIVER}'
 steps:
 - name: node:14.20.0
   entrypoint: yarn
