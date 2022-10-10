@@ -13,16 +13,4 @@
 
 # [START gae_quickstart_yaml]
 runtime: nodejs14
-env_variables:
-  APP_KEY: ${_APP_KEY}
-  DB_CONNECTION: ${_DB-CONNECTION}
-  DRIVE_DISK: ${_DRIVE_DISK}
-  HOST: ${_HOST}
-  PG_DB_NAME: ${_PG_DB_NAME}
-  PG_HOST: ${_PG_HOST}
-  PG_PASSWORD: ${_PG_PASSWORD}
-  PG_PORT: ${_PG_PORT}
-  PG_USER: ${_PG_USER}
-  SESSION_DRIVER: ${_SESSION_DRIVER}
-
 # [END gae_quickstart_yaml]
